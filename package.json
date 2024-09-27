@@ -13,13 +13,14 @@
   ],
   "author": "Zoubeir SAADI",
   "license": "MIT",
-  "main": "index.js",
+  "main": "dist/zv-player-sdk.bundle.js",
+  "type": "module",
   "scripts": {
     "build": "webpack",
     "watch": "webpack --watch",
-    "lint": "eslint './src/**/*.js'",
-    "lint:fix": "eslint './src/**/*.js' --fix",
-    "format": "prettier --write './src/**/*.js'",
+    "lint": "eslint ./src",
+    "lint:fix": "eslint ./src --fix",
+    "format": "prettier --write ./src --fix",
     "test": "jest",
     "cucumber": "npm run start & cucumber-js"
   },
