@@ -1,34 +1,40 @@
 import shaka from 'shaka-player/dist/shaka-player.ui.js';
 
-class VPlayer {
+class ZVPlayer {
   constructor() {
     this.player = null;
     this.videoElement = null;
   }
 
-  initPlayer(videoElement, manifestUri) {
+  // Initializes the player and attaches it to a video element
+  initPlayer(videoElement, videoUri) {
     this.videoElement = videoElement;
-    this.player = new shaka.Player(videoElement);
+    this.player = new shaka.Player();
 
+    // Attach the video element to the player
     this.player
-      .load(manifestUri)
+      .attach(videoElement)
       .then(() => {
-        console.log('Video successfully loaded');
+        // Load the manifest (DASH or HLS)
+        return this.player.load(videoUri);
       })
       .catch(this.onError);
   }
 
+  // Play the video
   play() {
     this.videoElement?.play();
   }
 
+  // Pause the video
   pause() {
     this.videoElement?.pause();
   }
 
+  // Handle player errors
   onError(error) {
-    console.error('Error code', error.code, 'object', error);
+    console.error('Error:', error);
   }
 }
 
-export default VPlayer;
+export default ZVPlayer;
