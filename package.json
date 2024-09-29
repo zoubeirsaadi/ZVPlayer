@@ -24,6 +24,16 @@
     "start": "serve . -l 8080",
     "test": "concurrently \"npm run start\" \"cucumber-js\""
   },
+  "files": [
+    "dist/"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zoubeirsaadi/zs-player-sdk.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@babel/preset-env": "^7.25.4",
