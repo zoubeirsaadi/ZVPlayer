@@ -7,9 +7,16 @@ class ZVPlayer {
   }
 
   // Initializes the player and attaches it to a video element
-  initPlayer(videoElement, videoUri) {
+  initPlayer(videoElement, videoUri, drmConfig) {
     this.videoElement = videoElement;
     this.player = new shaka.Player();
+
+    // Configure DRM settings if provided
+    if (drmConfig) {
+      this.player.configure({
+        drm: drmConfig,
+      });
+    }
 
     // Attach the video element to the player
     this.player
