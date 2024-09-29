@@ -1,0 +1,56 @@
+{
+  "name": "zvplayer",
+  "version": "1.0.0",
+  "description": "A reusable video player SDK",
+  "keywords": [
+    "video",
+    "sdk",
+    "player",
+    "ZVPlayer",
+    "shaka player",
+    "dash",
+    "hls"
+  ],
+  "author": "Zoubeir SAADI",
+  "license": "MIT",
+  "main": "dist/zv-player-sdk.bundle.js",
+  "type": "module",
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "lint": "eslint ./src",
+    "lint:fix": "eslint ./src --fix",
+    "format": "prettier --write ./src --fix",
+    "start": "serve . -l 8080",
+    "test": "concurrently \"npm run start\" \"cucumber-js\""
+  },
+  "files": [
+    "dist/"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zoubeirsaadi/zs-player-sdk.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.4",
+    "@cucumber/cucumber": "^11.0.1",
+    "babel-loader": "^9.2.1",
+    "concurrently": "^9.0.1",
+    "eslint": "^9.11.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-webpack-plugin": "^4.2.0",
+    "prettier": "^3.3.3",
+    "puppeteer": "^23.4.1",
+    "serve": "^14.2.3",
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "shaka-player": "^4.11.7"
+  }
+}
