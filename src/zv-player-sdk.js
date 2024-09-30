@@ -7,7 +7,7 @@ class ZVPlayer {
   }
 
   // Initializes the player and attaches it to a video element
-  initPlayer(videoElement, videoUri, drmConfig) {
+  initPlayer(videoElement, videoUri, drmConfig = null, abrConfig = null) {
     this.videoElement = videoElement;
     this.player = new shaka.Player();
 
@@ -15,6 +15,22 @@ class ZVPlayer {
     if (drmConfig) {
       this.player.configure({
         drm: drmConfig,
+      });
+    }
+
+    // Configure ABR (Adaptive Bitrate) if provided
+    if (abrConfig) {
+      this.player.configure({
+        abr: {
+          enabled: abrConfig.enabled ?? true, // Enable ABR by default
+          defaultBandwidthEstimate:
+            abrConfig.defaultBandwidthEstimate ?? 5000000, // Default estimate if not provided
+          restrictions: {
+            minBandwidth: abrConfig.minBandwidth ?? 1000000, // Minimum bitrate in bps
+            maxBandwidth: abrConfig.maxBandwidth ?? 8000000, // Maximum bitrate in bps
+          },
+          switchInterval: abrConfig.switchInterval ?? 2, // Default 2 seconds between quality switches
+        },
       });
     }
 
